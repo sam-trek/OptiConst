@@ -1,0 +1,43 @@
+:root {
+  --bg: #ffffff;
+  --panel: #ffffff;
+  --alt: #f4f7f7;
+  --line: #e1e7e6;
+  --ink: #16211f;
+  --ink-muted: #5c6e6b;
+  --accent: #0e8074;
+  --accent-soft: #e3f3f1;
+  --warn-bg: #fff6e8;
+  --warn-ink: #7a551a;
+  --warn-accent: #b4791e;
+  --error: #b4271e;
+  --error-soft: #fdecea;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Archivo', system-ui, sans-serif;
+}
+
+#app {
+  height: 100%;
+}
+
+button {
+  font-family: inherit;
+}
+
+.mono {
+  font-family: 'JetBrains Mono', monospace;
+}

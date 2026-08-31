@@ -1,0 +1,35 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Vite / TS build info
+node_modules/.tmp
+
+# Source material kept local only — not part of the shipped app.
+# (raw Jupyter notebooks, the project plan doc, design mockups, the
+# Python venv, and the loose "test data" folder — the CSVs the test
+# suite actually needs are duplicated into tests/fixtures/, which IS
+# tracked)
+*.ipynb
+.ipynb_checkpoints/
+*.docx
+/Assets/
+/test data/
+/venv/
