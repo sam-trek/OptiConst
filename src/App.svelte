@@ -144,7 +144,7 @@
     <div class="main">
       {#if !b12Result}
         <div class="empty-state">
-          <p>Upload an absorbance spectrum on the right, set your sample parameters, and hit Calculate.</p>
+          <p>Upload an absorbance spectrum, set your sample parameters, and hit Calculate.</p>
           <p class="foot-note">Add a PL spectrum too if you also want A21 and lifetime results.</p>
         </div>
       {:else}
@@ -471,5 +471,58 @@
     font-size: 14.5px;
     cursor: pointer;
     flex: none;
+  }
+
+  /* Below this width the fixed 392px control panel no longer fits next to
+     the chart — it was overflowing and squeezing .main down to ~0 width,
+     which is why nothing rendered on mobile. Stack them into one normally
+     scrolling page instead of two independent side-by-side scroll panes. */
+  @media (max-width: 860px) {
+    .app {
+      height: auto;
+      min-height: 100vh;
+    }
+    .body-grid {
+      flex-direction: column-reverse;
+    }
+    .deck {
+      width: 100%;
+      border-right: none;
+      border-bottom: 1px solid var(--line);
+      overflow-y: visible;
+    }
+    .main {
+      overflow-y: visible;
+      padding: 20px;
+    }
+    .scope {
+      min-height: 300px;
+    }
+    .readout-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px 20px;
+    }
+    .foot {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 10px;
+    }
+    .foot-note {
+      max-width: none;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .readout-grid {
+      grid-template-columns: 1fr;
+    }
+    .topbar {
+      padding: 0 16px;
+    }
+    .main,
+    .deck {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
   }
 </style>
