@@ -34,3 +34,25 @@ export interface A21Result {
   epsilonSpectrum: { wavenumber: number[]; epsilon: number[] };
   plSpectrum: { wavenumber: number[]; intensity: number[] };
 }
+
+/** One reference or sample concentration point for the relative QY method. */
+export interface QYPoint {
+  absorbance: number; // A at the excitation wavelength (single number, not a spectrum)
+  intensity: number; // integral I(lambda) dlambda over the emission band, plain wavelength integral
+}
+
+export interface QuantumYieldInput {
+  referenceQuantumYield: number; // Phi_R, from the picked preset or typed by the user
+  referenceRefractiveIndex: number; // n_R
+  sampleRefractiveIndex: number; // n_S
+  referencePoints: QYPoint[]; // >= 1 point
+  samplePoints: QYPoint[]; // >= 1 point
+}
+
+export interface QuantumYieldResult {
+  referenceSlope: number; // gradient of I vs (1-10^-A), reference, through origin
+  sampleSlope: number; // same, sample
+  quantumYieldSample: number; // Phi_S, the final answer
+  referenceFitPoints: { x: number; y: number }[]; // x = 1-10^-A, for charting
+  sampleFitPoints: { x: number; y: number }[];
+}

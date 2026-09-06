@@ -6,6 +6,10 @@
     y: number[];
     name: string;
     color: string;
+    /** 'lines' (default, for spectra) or 'markers' (for the QY scatter points). */
+    mode?: 'lines' | 'markers';
+    /** 'solid' (default) or 'dash' (used for regression fit lines). */
+    dash?: 'solid' | 'dash';
   }
 
   let {
@@ -23,8 +27,9 @@
       y: t.y,
       name: t.name,
       type: 'scatter' as const,
-      mode: 'lines' as const,
-      line: { color: t.color, width: 2.5 },
+      mode: t.mode ?? 'lines',
+      line: { color: t.color, width: 2.5, dash: (t.dash === 'dash' ? 'dash' : 'solid') as 'dash' | 'solid' },
+      marker: { color: t.color, size: 8 },
     }));
     Plotly.react(
       div,
