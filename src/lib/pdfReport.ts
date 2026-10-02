@@ -15,6 +15,8 @@ export interface ReportOptions {
   warnings: string[];
   /** PNG data URL, e.g. from Plotly's `Plotly.toImage(div, {format:'png'})`. */
   chartImageDataUrl?: string;
+  /** Height ÷ width of the chart image. Defaults to 0.4 (the Plotly chart's shape). */
+  chartImageAspect?: number;
 }
 
 /** Builds and triggers a client-side download of a one-click PDF report. */
@@ -61,7 +63,7 @@ export function downloadReport(opts: ReportOptions): void {
   if (opts.chartImageDataUrl) {
     const pageWidth = doc.internal.pageSize.getWidth();
     const imgWidth = pageWidth - margin * 2;
-    const imgHeight = imgWidth * 0.4;
+    const imgHeight = imgWidth * (opts.chartImageAspect ?? 0.4);
     if (y + imgHeight > doc.internal.pageSize.getHeight() - margin) {
       doc.addPage();
       y = margin;

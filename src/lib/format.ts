@@ -33,3 +33,20 @@ export function formatLifetime(seconds: number): string {
   }
   return `${formatScientific(seconds)} s`;
 }
+
+/** Fixed decimals, or an em dash for NaN/∞. */
+export function formatFixed(value: number, decimals: number): string {
+  return Number.isFinite(value) ? value.toFixed(decimals) : '—';
+}
+
+/** Thousands separators, e.g. 204800 -> "204,800". */
+export function formatThousands(value: number, maxDecimals = 0): string {
+  return Number.isFinite(value)
+    ? value.toLocaleString('en-US', { maximumFractionDigits: maxDecimals })
+    : '—';
+}
+
+/** Compact e-notation for equations, e.g. 1.1351e23. */
+export function formatEnotation(value: number, digits = 4): string {
+  return Number.isFinite(value) ? value.toExponential(digits - 1).replace('e+', 'e') : '—';
+}

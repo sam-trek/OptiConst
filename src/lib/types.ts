@@ -56,3 +56,28 @@ export interface QuantumYieldResult {
   referenceFitPoints: { x: number; y: number }[]; // x = 1-10^-A, for charting
   sampleFitPoints: { x: number; y: number }[];
 }
+
+/** One sample's headline numbers, as shown in the results table. */
+export interface ResultRow {
+  id: string;
+  color: string;
+  solvent: string;
+  peakWavenumber: number; // cm⁻¹
+  epsMax: number; // L·mol⁻¹·cm⁻¹
+  rangeLo: number; // cm⁻¹
+  rangeHi: number; // cm⁻¹
+  integralOverNu: number; // ∫ε/ν̃ dν̃, L·mol⁻¹·cm⁻¹
+  b12: number;
+  mu: number;
+  f12: number;
+}
+
+/** One curve on the absorbance / ε chart. */
+export interface ChartSeries {
+  id: string;
+  color: string;
+  /** Values as in the file (absorbance), aligned with the shared wavelength array. */
+  a: number[];
+  /** ε in L·mol⁻¹·cm⁻¹, aligned with the shared wavelength array. */
+  e: number[];
+}

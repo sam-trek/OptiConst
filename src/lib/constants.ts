@@ -5,6 +5,43 @@ export const PLANCK_H = 6.62607015e-34; // J*s
 export const SPEED_OF_LIGHT = 299792458; // m/s
 export const AVOGADRO_NA = 6.02214076e23; // 1/mol
 
+/** A named set of physical constants the B12 formula can be run with. */
+export interface ConstantSet {
+  id: 'si' | 'paper' | 'matlab' | 'custom';
+  label: string;
+  h: number; // J*s
+  c: number; // m/s
+  NA: number; // 1/mol
+}
+
+export const EXACT_SI: ConstantSet = {
+  id: 'si',
+  label: 'Exact SI values (recommended)',
+  h: PLANCK_H,
+  c: SPEED_OF_LIGHT,
+  NA: AVOGADRO_NA,
+};
+
+/** Rounded values quoted in the client's slides. */
+export const PAPER_CONSTANTS: ConstantSet = {
+  id: 'paper',
+  label: 'The paper (h 6.626e-34, c 3e8, Nₐ 6.022e23)',
+  h: 6.626e-34,
+  c: 3e8,
+  NA: 6.022e23,
+};
+
+/** Values hard-coded in the client's original MATLAB program (EinsteinCoefficients.m). */
+export const MATLAB_CONSTANTS: ConstantSet = {
+  id: 'matlab',
+  label: 'Original MATLAB program (h 6.62e-34, c 3e8)',
+  h: 6.62e-34,
+  c: 3e8,
+  NA: 6.02214086e23,
+};
+
+export const CONSTANT_PRESETS: ConstantSet[] = [EXACT_SI, PAPER_CONSTANTS, MATLAB_CONSTANTS];
+
 export interface ReferenceDye {
   name: string;
   quantumYield: number;
