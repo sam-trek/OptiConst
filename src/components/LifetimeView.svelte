@@ -1,16 +1,16 @@
 <script lang="ts">
-  import CollapsibleStepCard from './components/CollapsibleStepCard.svelte';
-  import ParameterField from './components/ParameterField.svelte';
-  import QuantumYieldStep from './components/QuantumYieldStep.svelte';
-  import ResultTile from './components/ResultTile.svelte';
-  import SpectrumChart from './components/SpectrumChart.svelte';
-  import UnitToggle from './components/UnitToggle.svelte';
-  import UploadSlot from './components/UploadSlot.svelte';
-  import WarningBanner from './components/WarningBanner.svelte';
-  import { calculateA21 } from './lib/calculations/a21';
-  import { calculateB12 } from './lib/calculations/b12';
-  import { formatLifetime, formatScientific } from './lib/format';
-  import { downloadReport } from './lib/pdfReport';
+  import CollapsibleStepCard from './CollapsibleStepCard.svelte';
+  import ParameterField from './ParameterField.svelte';
+  import QuantumYieldStep from './QuantumYieldStep.svelte';
+  import ResultTile from './ResultTile.svelte';
+  import SpectrumChart from './SpectrumChart.svelte';
+  import UnitToggle from './UnitToggle.svelte';
+  import UploadSlot from './UploadSlot.svelte';
+  import WarningBanner from './WarningBanner.svelte';
+  import { calculateA21 } from '../lib/calculations/a21';
+  import { calculateB12 } from '../lib/calculations/b12';
+  import { formatLifetime, formatScientific } from '../lib/format';
+  import { downloadReport } from '../lib/pdfReport';
   import type {
     A21Result,
     B12Result,
@@ -18,8 +18,8 @@
     SampleParameters,
     Spectrum,
     SpectralUnit,
-  } from './lib/types';
-  import { checkSpectrumSanity } from './lib/validation';
+  } from '../lib/types';
+  import { checkSpectrumSanity } from '../lib/validation';
 
   let unit = $state<SpectralUnit>('wavelength');
 

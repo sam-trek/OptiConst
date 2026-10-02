@@ -57,7 +57,7 @@
   let busy = $state(false);
 
   let fileInput: HTMLInputElement | undefined;
-  let resultsEl: HTMLDivElement | undefined;
+  let resultsEl = $state<HTMLDivElement>();
   let chartRef = $state<AbsorptionChart>();
 
   const toNum = (t: string) => Number(t.trim().replace(',', '.'));
